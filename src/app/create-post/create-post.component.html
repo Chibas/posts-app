@@ -1,0 +1,21 @@
+<div>
+  <form [formGroup]="rForm" #registerForm = "ngForm" (ngSubmit)="addPost(rForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <h1>Create post</h1>
+
+        <label> Post title
+          <input type="text" formControlName="title" [(ngModel)]="model.title">
+        </label>
+        <div class="alert" *ngIf="!rForm.controls['title'].valid && rForm.controls['title'].touched">{{  titleAlert }}</div>
+
+        <label> Description
+          <textarea formControlName="description" [(ngModel)]="model.description"></textarea>
+        </label>
+        <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">{{  descriptionAlert }}</div>
+
+        <input type="submit" class="button expanded" value="Submit Post" [disabled]="!rForm.valid">
+      </div>
+    </div>
+  </form>
+</div>

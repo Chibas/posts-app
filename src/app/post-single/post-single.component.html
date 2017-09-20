@@ -1,0 +1,54 @@
+<md-card *ngIf="post; else elseBlock" [hidden]="!editToggle">
+    <md-card-header>
+      <md-card-title>
+          {{post.title}}
+      </md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <div class="description">
+        <p>{{post.description}}</p>
+      </div>
+      <div class="post_meta">
+        <div class="author">
+          <p>Author: {{post.author_name}}</p>
+        </div>
+        <div class="post_date">
+          <p>Created at: {{post.created_at}}</p>
+        </div>
+      </div>
+    </md-card-content>
+    <div class="button-row">
+      <button md-button [hidden]="!isAuthor" (click)="deletePost(post)" > Delete</button>
+      <button md-button [hidden]="!isAuthor" (click)="toggleForm()" > Edit</button>
+    </div>
+
+</md-card>
+<ng-template #elseBlock>
+  <md-card>
+    Post not found! Please try again
+  </md-card>
+</ng-template>
+
+<div [hidden]="editToggle">
+  <form [formGroup]="rForm" #registerForm = "ngForm" (ngSubmit)="updatePost()">
+    <div class="form-container">
+      <div class="row columns">
+        <h1>Edit post</h1>
+
+        <label> Post title
+          <input type="text" formControlName="title" [(ngModel)]="model.title">
+        </label>
+        <div class="alert" *ngIf="!rForm.controls['title'].valid && rForm.controls['title'].touched">{{  titleAlert }}</div>
+
+        <label> Description
+          <textarea formControlName="description" [(ngModel)]="model.description"></textarea>
+        </label>
+        <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">{{  descriptionAlert }}</div>
+        <div class="button-row">
+          <button md-button type="submit" value="Submit Post" [disabled]="!rForm.valid">Save</button>
+          <button md-button (click)="toggleForm()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

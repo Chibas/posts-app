@@ -1,0 +1,28 @@
+.form-wrap {
+  background-color: #fafafa;
+  height: 100vh;
+  width: 100%;
+  padding-top: 80px;
+}
+
+.form-wrap form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 30px 20px;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px #eee;
+}
+
+.signup-wrap {
+  margin-top: 30px;
+}
+
+button[type="submit"] {
+  background-color: #3f51b5;
+  color: #fff;
+}

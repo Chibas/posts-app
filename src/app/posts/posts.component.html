@@ -1,0 +1,52 @@
+<div class="form-wrap" *ngIf = "!logged">
+  <form name="login" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login()" novalidate>
+    <md-form-field class="example-full-width">
+      <input type="email" name="userEmail" placeholder="E-mail" name="username" mdInput [(ngModel)]="model.username" #username="ngModel" required />
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type="password" name="userPassword" mdInput placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required />
+    </md-form-field>
+    <button md-button color="primary" type="submit">Log in</button>
+    <div class="signup-wrap">
+      <p>New here? <a [routerLink]="['/register']">Sign up!</a></p>
+    </div>
+  </form>
+
+</div>
+  <h2>Recent Posts</h2>
+  <ul id="posts-list" *ngIf="posts.length; else elseBlock">
+    <li class="post_item"  *ngFor="let post of postsForPage">
+      <md-card>
+          <md-card-header>
+            <md-card-title (click)="onSelect(post)">
+              {{post.title}}
+            </md-card-title>
+          </md-card-header>
+          <md-card-content>
+            <div class="description">
+              <p>{{post.description}}</p>
+            </div>
+            <div class="post_meta">
+              <div class="author">
+                <p>Author: {{post.author_name}}</p>
+              </div>
+              <div class="post_date">
+                <p>Created at: {{post.created_at}}</p>
+              </div>
+            </div>
+          </md-card-content>
+      </md-card>
+    </li>
+  </ul>
+  <ng-template #elseBlock>
+    <md-card>
+      No posts found
+    </md-card>
+  </ng-template>
+  <div class="pagination">
+    <md-button-toggle-group #group="mdButtonToggleGroup">
+      <md-button-toggle *ngFor="let page of pages" value="{{page}}" (click)="setPage(page)">
+        {{page}}
+      </md-button-toggle>
+    </md-button-toggle-group>
+  </div>

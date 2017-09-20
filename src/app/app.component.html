@@ -1,0 +1,16 @@
+
+<header>
+  <md-toolbar color="primary">
+    <span>POSTS APP</span>
+    <span class="spacer"></span>
+    <button md-button routerLink="register">Register</button>
+    <button md-button routerLink="posts">Posts</button>
+    <button md-button routerLink="edit">Create ad</button>
+    <button md-button (click)="logout()" [hidden]="!logged">Logout</button>
+    <button md-button routerLink="login" [hidden]="logged">Login</button>
+  </md-toolbar>
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>

@@ -1,0 +1,10 @@
+<h2>Register</h2>
+<div class="register-wrap">
+  <form name="register" #registerForm = "ngForm" (ngSubmit)="registerForm.form.valid && register()" novalidate>
+    <input type="text" placeholder="First name" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required>
+    <input type="text" placeholder="Last name "name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required>
+    <input type="text" placeholder="Username" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+    <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+    <button type="submit" md-button value="REGISTER">Register</button>
+  </form>
+</div>

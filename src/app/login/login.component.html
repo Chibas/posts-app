@@ -1,0 +1,18 @@
+<div class="form-wrap">
+  <form name="login" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login()" novalidate>
+    <md-form-field class="example-full-width">
+      <input type="email" name="userEmail" placeholder="E-mail" name="username" mdInput [(ngModel)]="model.username" #username="ngModel" required />
+      <md-error *ngIf="emailFormControl.hasError('pattern')">
+        Please enter a valid email address
+      </md-error>
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type="password" name="userPassword" mdInput placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required />
+    </md-form-field>
+    <button md-button color="primary" type="submit">Log in</button>
+    <div class="signup-wrap">
+      <p>New here? <a [routerLink]="['/register']">Sign up!</a></p>
+    </div>
+  </form>
+
+</div>
